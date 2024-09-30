@@ -1,0 +1,81 @@
+/* removes underline for all links */
+a {
+    text-decoration: none;
+}
+
+.logo {
+    max-width: 400px;
+}
+
+/* navbar styles */
+.navbar {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+}
+
+.navbar a {
+    color: black;
+    padding: 10px;
+    font-size: 28px;
+}
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    /* remove the bullet points */
+    list-style-type: none;
+    /* display the list flex and align the items centered */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.navbar ul a:hover,
+.navbar ul a:focus {
+    background-color: #182b49;
+    color: white;
+}
+
+p {
+    font-size: 28px;
+}
+
+.section1 {
+    display: inline-block;
+    width: 100%;
+    background: rgb(245, 240, 230)
+}
+
+.section2 {
+    display: inline-block;
+    width: 100%;
+    background-image: url("https://www.ucsd.edu/_resources/img/bg-orbs-1.jpg");
+    color: white;
+}
+
+.section3 {
+    display: inline-block;
+    width: 100%;
+    background: rgb(245, 240, 230)
+}
+
+/* grid settings */
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    margin: 0 auto; /* Center the grid */
+}
+
+.wrapped-item {
+    background-color: #182b49;
+    color: white;
+    max-height: 500px;
+    overflow-y: scroll;
+    padding: 15px;
+    /*border-radius: 5px;*/
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* subtle shadow */
+}
