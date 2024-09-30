@@ -64,12 +64,21 @@ p {
     background: rgb(245, 240, 230)
 }
 
+.form {
+    display: inline-block;
+    width: 100%;
+    background-image: url("https://www.ucsd.edu/_resources/img/bg-orbs-1.jpg");
+    color: white;
+    max-width: 100%;
+}
+
 /* grid settings */
 .wrapper {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
     margin: 0 auto; /* Center the grid */
+    padding: 25px;
 }
 
 .wrapped-item {
