@@ -46,7 +46,8 @@ p {
 .section1 {
     display: inline-block;
     width: 100%;
-    background: rgb(245, 240, 230)
+    background: rgb(245, 240, 230);
+    max-width: 100%;
 }
 
 .section2 {
@@ -54,11 +55,12 @@ p {
     width: 100%;
     background-image: url("https://www.ucsd.edu/_resources/img/bg-orbs-1.jpg");
     color: white;
+    max-width: 100%;
 }
 
 .section3 {
     display: inline-block;
-    width: 100%;
+    max-width: 100%;
     background: rgb(245, 240, 230)
 }
 
@@ -78,4 +80,31 @@ p {
     padding: 15px;
     /*border-radius: 5px;*/
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* subtle shadow */
+}
+
+/* responsiveness */
+@media screen and (max-width: 800px) {
+    /* Hide the navbar links */
+    .navbar a {
+        display: none;
+    }
+
+    /* Adjust the logo */
+    .top-logo {
+        max-width: 75%;
+        height: auto;
+    }
+
+    h1, h2, h3, h4 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    /* Change the grid to 2 columns */
+    .wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
