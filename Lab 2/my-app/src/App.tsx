@@ -1,4 +1,6 @@
 import './App.css';
+import { Label, Note } from "./types"; // Import the Label type
+import { dummyNotesList } from "./constants";
 
 function App() {
   return (
@@ -12,13 +14,19 @@ function App() {
                   <button type="submit">Create Note</button>
               </div>
           </form>
-          <div className="note-individual">
-              <button>
-                  x
-              </button>
-              <h2> 1st Note Title </h2>
-              <p> 1st Note Content </p>
-              <p> 1st Note Label </p>
+          <div className="notes-grid">
+              {dummyNotesList.map((note) => (
+                  <div
+                      key={note.id}
+                      className="note-item">
+                      <div className="notes-header">
+                          <button>x</button>
+                      </div>
+                      <h2> {note.title} </h2>
+                      <p> {note.content} </p>
+                      <p> {note.label} </p>
+                  </div>
+              ))}
           </div>
       </div>
 
