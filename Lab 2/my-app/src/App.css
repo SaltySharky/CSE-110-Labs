@@ -1,74 +1,70 @@
-.App {
-  text-align: center;
+:root {
+  --primary-bg: #f9f9f9;
+  --primary-text: #000;
+  --secondary-bg: #fff;
+  --button-bg: rgb(64, 154, 184);
+  --button-hover-bg: rgb(106, 175, 198);
+  --note-border: #ccc;
+  --header-bg: #282c34;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-.note-individual {
-  border: 1px solid black;
-  display: "flex";
-  flex-direction: column;
-}
-
-.app-container {
-  display: "flex";
-  flex-direction: column;
-}
-
-.note-form {
-  display: "flex";
-  border: 1px solid black;
-  flex-direction: column;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body.dark-mode {
+  --primary-bg: #333;
+  --primary-text: #f9f9f9;
+  --secondary-bg: #444;
+  --button-bg: #61dafb;
+  --button-hover-bg: #21a1f1;
+  --note-border: #555;
+  --header-bg: #1b1f23;
 }
 
 body {
   margin: 20px;
-  background-color: lightgrey;
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .app-container {
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-@media (min-width: 600px) {
-  .app-container {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 20px;
-  }
+.note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid var(--note-border);
+  border-radius: 8px;
+  background-color: var(--secondary-bg);
+}
+
+textarea,
+input {
+  border-radius: 5px;
+  border: 1px solid var(--note-border);
+  padding: 10px;
+  font-size: 16px;
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+}
+
+.note-form button {
+  border-radius: 5px;
+  background-color: var(--button-bg);
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.note-form button:hover {
+  background-color: var(--button-hover-bg);
+  cursor: pointer;
 }
 
 .notes-grid {
@@ -81,17 +77,23 @@ body {
 .note-item {
   display: flex;
   flex-direction: column;
-  border: 1px solid #ccc;
-  padding: 10px;
+  border: 1px solid var(--note-border);
+  padding: 20px;
   border-radius: 5px;
-  background-color: #f9f9f9;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--secondary-bg);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.note-item:hover {
+  transform: scale(1.03);
   cursor: pointer;
 }
 
 .notes-header {
   display: flex;
   justify-content: flex-end;
+  gap: 10px;
 }
 
 .notes-header button {
@@ -99,44 +101,13 @@ body {
   background: transparent;
   border: none;
   cursor: pointer;
-  max-width: fit-content;
-}
-
-h2 {
-  margin: 0;
-}
-
-.note-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-textarea,
-input {
-  border-radius: 5px;
-  border: 1px solid black;
-  padding: 10px;
-  font-size: 16px;
-}
-
-.note-form button {
-  border-radius: 5px;
-  background-color: rgb(64, 154, 184);
-  border: none;
-  padding: 10px;
-  font-size: 16px;
-  color: white;
-}
-
-.note-form button:hover {
-  background-color: rgb(106, 175, 198);
-  cursor: pointer;
+  padding: 5px;
+  color: var(--primary-text);
 }
 
 .edit-buttons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   gap: 5px;
 }
 
@@ -144,7 +115,64 @@ input {
   flex: 1;
 }
 
-.edit-buttons button:last-of-type {
-  background-color: rgb(220, 89, 89);
+h2 {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 600px) {
+  .app-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 20px;
+  }
+}
+
+.theme-toggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.theme-toggle button {
+  background-color: var(--button-bg);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
   color: white;
+  cursor: pointer;
+}
+
+.theme-toggle button:hover {
+  background-color: var(--button-hover-bg);
+}
+
+.label-box {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+}
+
+.label-personal {
+  background-color: #F6D4BA; /* Red for personal */
+}
+
+.label-school {
+  background-color: #F3B391; /* Blue for school */
+}
+
+.label-work {
+  background-color: #FEFADC; /* Green for work */
+}
+
+.label-other {
+  background-color: #FEEA00; /* Yellow for other */
+}
+
+.note-item p.label {
+  margin-top: 10px;
 }
