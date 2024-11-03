@@ -1,0 +1,23 @@
+name: Unit Tests
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'Lab 4/**' # Only run the action if files in "Lab 4" are modified
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'Lab 4/**'
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: npm install
+        working-directory: ./Lab 4 # specifies where 'npm install' and 'npm test' should be executed.
+      - name: Unit Test
+        run: npm test
+        working-directory: ./Lab 4 # specifies where 'npm install' and 'npm test' should be executed.
