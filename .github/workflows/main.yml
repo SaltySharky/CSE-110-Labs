@@ -1,17 +1,23 @@
-name: Unit Tests # name of the test
+name: Unit Tests
 
 on:
- push:
-   branches: [ main ]  # or 'master' if that's your primary branch name
- pull_request:
-   branches: [ main ] # the Github Action will activate "on" the event that you "push" to the repo
+  push:
+    branches: [ main ]
+    paths:
+      - 'Lab 4/**' # Only run the action if files in "Lab 4" are modified
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'Lab 4/**'
 
-jobs: # the things being executed
- tests: # the name of your status check, will become important when you do branch protection
-   runs-on: ubuntu-latest # which device on Github's server that you are running the Actions on
-   steps:
-     - uses: actions/checkout@v4 # using version 4 of Actions
-     - name: Install Dependencies
-       run: npm install
-     - name: Unit Test
-       run: npm test # the actual testing line
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: npm install
+        working-directory: ./Lab 4 # specifies where 'npm install' and 'npm test' should be executed.
+      - name: Unit Test
+        run: npm test
+        working-directory: ./Lab 4 # specifies where 'npm install' and 'npm test' should be executed.
