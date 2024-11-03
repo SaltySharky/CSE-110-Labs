@@ -24,8 +24,11 @@ jobs:
       - name: Set Permissions
         run: chmod -R 755 "./Lab 4"
 
+      - name: Set Permissions for react-scripts
+        run: chmod +x "./Lab 4/node_modules/.bin/react-scripts"
+
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
         working-directory: "./Lab 4"
 
       - name: Unit Test
