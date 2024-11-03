@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'Lab 4/**' # Only run the action if files in "Lab 4" are modified
+      - 'Lab 4/**'
   pull_request:
     branches: [ main ]
     paths:
@@ -15,9 +15,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20' # specify your Node.js version
+
+      - name: Set Permissions
+        run: chmod -R 755 ./Lab 4
+
       - name: Install Dependencies
         run: npm install
-        working-directory: ./Lab 4 # specifies where 'npm install' and 'npm test' should be executed.
+        working-directory: ./Lab 4
+
       - name: Unit Test
         run: npm test
-        working-directory: ./Lab 4 # specifies where 'npm install' and 'npm test' should be executed.
+        working-directory: ./Lab 4
